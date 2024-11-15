@@ -1,0 +1,7 @@
+{
+  "name": "GymSoftApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

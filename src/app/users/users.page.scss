@@ -40,6 +40,24 @@
   background-color: #f7f7f7;
 }
 
+/* Estilo para ion-select, centrando verticalmente el texto */
+.input-item ion-select {
+  margin-top: 6px;
+  padding: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  color: #333;
+  height: 44px; /* Ajustar la altura para centrar mejor */
+  display: flex;
+  align-items: center; /* Centrar verticalmente el texto */
+}
+
+/* Estilo para ion-select-option */
+.input-item ion-select-option {
+  font-size: 14px;
+}
+
 /* Estilo para ion-toggle */
 .input-item ion-toggle {
   margin-left: auto;
@@ -122,7 +140,8 @@ ion-button {
     font-size: 13px;
   }
 
-  ion-input {
+  ion-input,
+  ion-select {
     padding: 8px;
   }
 

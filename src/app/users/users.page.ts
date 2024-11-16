@@ -3,9 +3,10 @@ import { User } from '../models/user';
 import { UserService } from '../services/user.service';
 import { CommonModule } from '@angular/common';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonGrid, IonCol, IonRow, IonIcon, IonButton, IonItem, 
-  IonInput, IonText, IonCard, IonToast, AlertController } from '@ionic/angular/standalone';
+  IonInput, IonText, IonCard, IonToast, AlertController, IonSelect, IonSelectOption, IonToggle } from '@ionic/angular/standalone';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, FormsModule } from '@angular/forms';
-import { IonToggleValueAccessor } from '../directives/ion-toggle-value-accessor';
+// import { IonToggleValueAccessor } from '../directives/ion-toggle-value-accessor';
+
 
 @Component({
   selector: 'app-users',
@@ -13,7 +14,8 @@ import { IonToggleValueAccessor } from '../directives/ion-toggle-value-accessor'
   styleUrls: ['users.page.scss'],
   standalone: true,
   imports: [CommonModule, IonIcon, IonRow, IonCol, IonGrid, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent, 
-    IonButton, ReactiveFormsModule, IonItem, IonInput, IonText, IonCard, FormsModule, IonToggleValueAccessor, IonToast],
+    IonButton, ReactiveFormsModule, IonItem, IonInput, IonText, IonCard, FormsModule, IonToast,
+    IonSelect, IonSelectOption, IonToggle],
 })
 export class Tab1Page  implements OnInit{
 
@@ -91,13 +93,20 @@ export class Tab1Page  implements OnInit{
   // }
 
   saveForm() {
+    console.log('form value:', this.form.value);
     if (this.form.valid) {
       if (this.isEditing && this.selectedUserId !== null) {
         // Editar usuario existente
         this.userService.updateUser(this.selectedUserId, this.form.value).subscribe({
           next: async (resp: User) => {
             console.log('User updated:', resp);
-            this.form.reset();
+            // this.form.reset();
+            this.form.reset({
+              username: null,
+              password: null,
+              role: null,
+              enabled: false,
+            });
             this.isEditing = false;
             this.selectedUserId = null;
             await this.presentToast('Usuario actualizado exitosamente', 'success');
@@ -113,7 +122,13 @@ export class Tab1Page  implements OnInit{
         this.userService.createUser(this.form.value).subscribe({
           next: async (resp: User) => {
             console.log('User created:', resp);
-            this.form.reset();
+            // this.form.reset();
+            this.form.reset({
+              username: null,
+              password: null,
+              role: null,
+              enabled: false,
+            });
             await this.presentToast('Usuario creado exitosamente', 'success');
             this.getUsers();
           },

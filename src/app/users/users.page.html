@@ -35,7 +35,11 @@
       <!-- Campo Role -->
       <ion-item class="input-item">
         <ion-label position="stacked">Role</ion-label>
-        <ion-input type="text" required formControlName="role"></ion-input>
+        <ion-select formControlName="role" placeholder="Selecciona un rol">
+          <ion-select-option value="admin">Administrador</ion-select-option>
+          <ion-select-option value="operario">Operario</ion-select-option>
+          <ion-select-option value="entrenador">Entrenador</ion-select-option>
+        </ion-select>
         <ion-text color="danger" *ngIf="form.controls['role'].touched && form.controls['role'].invalid">
           Role es requerido.
         </ion-text>

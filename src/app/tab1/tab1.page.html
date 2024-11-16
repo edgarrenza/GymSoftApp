@@ -1,17 +1,104 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title>Registered Users</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Registered Users</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!-- Formulario -->
+  <ion-card class="form-card">
+    <form [formGroup]="form" *ngIf="isForm">
+      <!-- Campo Username -->
+      <ion-item class="input-item">
+        <ion-label position="stacked">User Name</ion-label>
+        <ion-input type="text" required formControlName="username"></ion-input>
+        <ion-text color="danger" *ngIf="form.controls['username'].touched && form.controls['username'].invalid">
+          Username es requerido.
+        </ion-text>
+      </ion-item>
+
+      <!-- Campo Password -->
+      <ion-item class="input-item">
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input type="password" required formControlName="password"></ion-input>
+        <ion-text color="danger" *ngIf="form.controls['password'].touched && form.controls['password'].invalid">
+          Password es requerido.
+        </ion-text>
+      </ion-item>
+
+      <!-- Campo Role -->
+      <ion-item class="input-item">
+        <ion-label position="stacked">Role</ion-label>
+        <ion-input type="text" required formControlName="role"></ion-input>
+        <ion-text color="danger" *ngIf="form.controls['role'].touched && form.controls['role'].invalid">
+          Role es requerido.
+        </ion-text>
+      </ion-item>
+
+      <!-- Campo Enabled con ion-toggle -->
+      <ion-item class="input-item">
+        <ion-label for="enabled">Enabled</ion-label>
+        <ion-toggle formControlName="enabled"></ion-toggle>
+      </ion-item>
+
+      <!-- <div class="btn-container">
+        <ion-button expand="block" color="primary" (click)="saveForm()">Registrar</ion-button>
+      </div> -->
+
+      <div class="btn-container">
+        <ion-button expand="block" color="primary" (click)="saveForm()">
+          {{ isEditing ? 'Actualizar' : 'Registrar' }}
+        </ion-button>
+        <ion-button expand="block" color="medium" *ngIf="isEditing" (click)="cancelEdit()">
+          Cancelar
+        </ion-button>
+      </div>
+    </form>
+  </ion-card>
+
+  <!-- Tabla -->
+  <ion-card class="table-card">
+    <ion-grid>
+      <ion-row class="table-header">
+        <ion-col size="2">ID</ion-col>
+        <ion-col size="3">User Name</ion-col>
+        <ion-col size="3">Role</ion-col>
+        <ion-col size="2">Enabled</ion-col>
+        <ion-col size="2">Acciones</ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let user of usersList" class="table-row">
+        <ion-col size="2">{{ user.userId }}</ion-col>
+      <ion-col size="3">{{ user.username }}</ion-col>
+      <ion-col size="3">{{ user.role }}</ion-col>
+      <ion-col size="2">
+        <ion-icon *ngIf="user.enabled" name="checkmark-circle" color="success"></ion-icon>
+        <ion-icon *ngIf="!user.enabled" name="close-circle" color="danger"></ion-icon>
+      </ion-col>
+      <ion-col size="2">
+        <!-- <ion-button color="primary" fill="outline" size="small" (click)="editUser(user)">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-button> -->
+        <ion-button color="danger" fill="outline" size="small" (click)="confirmDeleteUser(user.userId)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-button>
+      </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 </ion-content>
+
+<ion-toast
+  [isOpen]="showToast"
+  [message]="toastMessage"
+  [color]="toastColor"
+  duration="2000"
+  position="top"
+  (didDismiss)="showToast = false">
+</ion-toast>

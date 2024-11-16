@@ -17,7 +17,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, F
     IonButton, ReactiveFormsModule, IonItem, IonInput, IonText, IonCard, FormsModule, IonToast,
     IonSelect, IonSelectOption, IonToggle],
 })
-export class Tab1Page  implements OnInit{
+export class UsersPage  implements OnInit{
 
   usersList?: User[];
   form: FormGroup;

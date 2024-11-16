@@ -8,9 +8,9 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, F
 import { IonToggleValueAccessor } from '../directives/ion-toggle-value-accessor';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss'],
+  selector: 'app-users',
+  templateUrl: 'users.page.html',
+  styleUrls: ['users.page.scss'],
   standalone: true,
   imports: [CommonModule, IonIcon, IonRow, IonCol, IonGrid, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent, 
     IonButton, ReactiveFormsModule, IonItem, IonInput, IonText, IonCard, FormsModule, IonToggleValueAccessor, IonToast],

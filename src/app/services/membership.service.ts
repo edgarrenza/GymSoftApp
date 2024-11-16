@@ -6,13 +6,13 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ClientService {
+export class MembershipService {
 
-  url = `${environment.gymSoftApi}/api/client`;
+  url = `${environment.gymSoftApi}/api/membership`;
 
   constructor(private http: HttpClient) { }
 
-  getClients(): Observable<any[]> {
+  getMemberships(): Observable<any[]> {
     return this.http.get<any[]>(`${this.url}/all`);
   }
 

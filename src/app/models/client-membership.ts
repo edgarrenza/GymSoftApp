@@ -12,3 +12,6 @@ export interface ClientMembership {
     clientId:           number;
     membershipId:       number;
 }
+
+export type CreateClientMembership = Pick<ClientMembership, 'clientId' | 'membershipId' | 'startDate' | 'endDate' | 'remainingDays' | 'quantity' | 'cost' | 'price'>;
+export type UpdateClientMembership = Pick<ClientMembership, 'startDate' | 'endDate' | 'remainingDays' | 'quantity' | 'cost' | 'price'>;

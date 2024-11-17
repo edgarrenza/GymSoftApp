@@ -1,0 +1,138 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ title }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="form-card">
+    <form *ngIf="form" [formGroup]="form">
+
+      <!-- CliendId -->
+      <ion-item *ngIf="!clientMembershipId" class="input-item">
+        <ion-label position="stacked">ClientId</ion-label>
+        <ion-select formControlName="clientId" placeholder="Selecciona un Client">
+          <ion-select-option 
+          *ngFor="let client of clients"
+          [value]="client.clientId">
+          {{ client.clientId }} - {{ client.firstName }} {{ client.lastName }} - {{ client.email }}
+        </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- MembershipId -->
+      <ion-item *ngIf="!clientMembershipId" class="input-item">
+        <ion-label position="stacked">MembershipId</ion-label>
+        <ion-select formControlName="membershipId" placeholder="Selecciona un Membership">
+          <ion-select-option 
+          *ngFor="let membership of memberships"
+          [value]="membership.membershipId">
+          {{ membership.membershipId }} - {{ membership.type }} {{ membership.description }} - {{ membership.cost }}
+        </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- StartDate -->
+      <ion-item class="input-item">
+        <ion-label position="stacked">StartDate</ion-label>
+        <ion-datetime-button datetime="startDate"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime 
+            id="startDate" 
+            formControlName="startDate"
+            [value]="form.get('startDate')?.value"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+
+      <!-- EndDate -->
+      <ion-item class="input-item">
+        <ion-label position="stacked">EndDate</ion-label>
+        <ion-datetime-button datetime="endDate"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime 
+            id="endDate" 
+            formControlName="endDate" 
+            [value]="form.get('endDate')?.value"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+
+      <!-- RemainingDays -->
+      <ion-item class="input-item">
+        <ion-label position="stacked">RemainingDays</ion-label>
+        <ion-input
+          formControlName="remainingDays"
+          type="number"
+          inputmode="numeric"
+          placeholder="Ingrese la cantidad de RemainingDays"
+        ></ion-input>
+      </ion-item>
+
+      <!-- Quantity -->
+      <ion-item class="input-item">
+        <ion-label position="stacked">Quantity</ion-label>
+        <ion-input
+          formControlName="quantity"
+          type="number"
+          inputmode="numeric"
+          placeholder="Ingrese la cantidad de Quantity"
+        ></ion-input>
+      </ion-item>
+
+      <!-- Cost -->
+      <ion-item class="input-item">
+        <ion-label position="stacked">Cost</ion-label>
+        <ion-input
+          formControlName="cost"
+          type="number"
+          inputmode="numeric"
+          placeholder="Ingrese el Cost"
+        ></ion-input>
+      </ion-item>
+
+      <!-- Price -->
+      <ion-item class="input-item">
+        <ion-label position="stacked">Price</ion-label>
+        <ion-input
+          formControlName="price"
+          type="number"
+          inputmode="numeric"
+          placeholder="Ingrese el Price"
+        ></ion-input>
+      </ion-item>
+
+      <!-- Campo Enabled con ion-toggle -->
+      <ion-item *ngIf="clientMembershipId" class="input-item">
+        <ion-label for="enabled">Enabled</ion-label>
+        <ion-toggle formControlName="enabled"></ion-toggle>
+      </ion-item>
+
+      <div class="btn-container">
+        <ion-button *ngIf="!clientMembershipId" expand="block" color="primary" (click)="create()">
+          Registrar
+        </ion-button>
+        <ion-button *ngIf="clientMembershipId" expand="block" color="primary" (click)="update()">
+          Actualizar
+        </ion-button>
+      </div>
+
+    </form>
+  </ion-card>
+</ion-content>
+
+<ion-toast
+  [isOpen]="showToast"
+  [message]="toastMessage"
+  [color]="toastColor"
+  duration="2000"
+  position="top"
+  (didDismiss)="showToast = false">
+</ion-toast>

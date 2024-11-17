@@ -1,13 +1,67 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Register Clients Memberships</ion-title>
+    <ion-title>Clients Memberships</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Register Clients Memberships</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <ion-card class="form-card">
+    <div class="btn-container">
+      <ion-button expand="block" color="primary" (click)="modalClientMembership()">
+        Crear Client Membership
+      </ion-button>
+    </div>
+  </ion-card>
+
+  <!-- Tabla -->
+  <ion-card class="table-card">
+    <ion-grid>
+
+      <ion-row class="table-header">
+        <ion-col size="1">ClientId</ion-col>
+        <ion-col size="1">MembershipId</ion-col>
+        <ion-col size="1">Start Date</ion-col>
+        <ion-col size="1">End Date</ion-col>
+        <ion-col size="2">RemainingDays</ion-col>
+        <ion-col size="1">Quantity</ion-col>
+        <ion-col size="1">Cost</ion-col>
+        <ion-col size="1">Price</ion-col>
+        <ion-col size="1">Enabled</ion-col>
+        <ion-col size="2">Acciones</ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let clientMembership of clientsMemberships" class="table-row">
+        <ion-col size="1">{{ clientMembership.clientId }}</ion-col>
+        <ion-col size="1">{{ clientMembership.membershipId }}</ion-col>
+        <ion-col size="1">{{ clientMembership.startDate | date }}</ion-col>
+        <ion-col size="1">{{ clientMembership.endDate | date }}</ion-col>
+        <ion-col size="2">{{ clientMembership.remainingDays }}</ion-col>
+        <ion-col size="1">{{ clientMembership.quantity }}</ion-col>
+        <ion-col size="1">{{ clientMembership.cost }}</ion-col>
+        <ion-col size="1">{{ clientMembership.price }}</ion-col>
+        <ion-col size="1">{{ clientMembership.enabled }}</ion-col>
+
+        <ion-col size="2">
+          <ion-button color="primary" fill="outline" size="small" (click)="modalClientMembership(clientMembership.clientMembershipId)">
+            <ion-icon slot="icon-only" name="create"></ion-icon>
+          </ion-button>
+          <ion-button color="danger" fill="outline" size="small" (click)="delete(clientMembership.clientMembershipId)" >
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </ion-card>
+
 </ion-content>
+
+<ion-toast
+  [isOpen]="showToast"
+  [message]="toastMessage"
+  [color]="toastColor"
+  duration="2000"
+  position="top"
+  (didDismiss)="showToast = false">
+</ion-toast>

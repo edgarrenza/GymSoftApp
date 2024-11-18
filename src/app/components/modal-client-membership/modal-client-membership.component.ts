@@ -153,6 +153,11 @@ export class ModalClientMembershipComponent  implements OnInit {
     this.showToast = true;
   }
 
+  isInvalid(ctrName: string){
+    const control = this.form.get(ctrName);
+    return control?.touched && control?.errors;
+  }
+
   closeModal(data?: boolean) {
     this.modalController.dismiss(data ? data : false); // Cerrar el modal
   }

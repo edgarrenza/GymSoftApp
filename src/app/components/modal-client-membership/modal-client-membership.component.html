@@ -21,6 +21,9 @@
           {{ client.clientId }} - {{ client.firstName }} {{ client.lastName }} - {{ client.email }}
         </ion-select-option>
         </ion-select>
+        <ion-text color="danger" *ngIf="isInvalid('clientId')">
+          El clientId es requerido.
+        </ion-text>
       </ion-item>
 
       <!-- MembershipId -->
@@ -33,6 +36,9 @@
           {{ membership.membershipId }} - {{ membership.type }} {{ membership.description }} - {{ membership.cost }}
         </ion-select-option>
         </ion-select>
+        <ion-text color="danger" *ngIf="isInvalid('membershipId')">
+          El membershipId es requerido.
+        </ion-text>
       </ion-item>
 
       <!-- StartDate -->
@@ -48,6 +54,9 @@
             ></ion-datetime>
           </ng-template>
         </ion-modal>
+        <ion-text color="danger" *ngIf="isInvalid('startDate')">
+          El startDate es requerido.
+        </ion-text>
       </ion-item>
 
       <!-- EndDate -->
@@ -63,6 +72,9 @@
             ></ion-datetime>
           </ng-template>
         </ion-modal>
+        <ion-text color="danger" *ngIf="isInvalid('endDate')">
+          El endDate es requerido.
+        </ion-text>
       </ion-item>
 
       <!-- RemainingDays -->
@@ -74,6 +86,9 @@
           inputmode="numeric"
           placeholder="Ingrese la cantidad de RemainingDays"
         ></ion-input>
+        <ion-text color="danger" *ngIf="isInvalid('remainingDays')">
+          El remainingDays es requerido.
+        </ion-text>
       </ion-item>
 
       <!-- Quantity -->
@@ -85,6 +100,9 @@
           inputmode="numeric"
           placeholder="Ingrese la cantidad de Quantity"
         ></ion-input>
+        <ion-text color="danger" *ngIf="isInvalid('quantity')">
+          El quantity es requerido.
+        </ion-text>
       </ion-item>
 
       <!-- Cost -->
@@ -96,6 +114,9 @@
           inputmode="numeric"
           placeholder="Ingrese el Cost"
         ></ion-input>
+        <ion-text color="danger" *ngIf="isInvalid('cost')">
+          El cost es requerido.
+        </ion-text>
       </ion-item>
 
       <!-- Price -->
@@ -107,6 +128,9 @@
           inputmode="numeric"
           placeholder="Ingrese el Price"
         ></ion-input>
+        <ion-text color="danger" *ngIf="isInvalid('price')">
+          El price es requerido.
+        </ion-text>
       </ion-item>
 
       <!-- Campo Enabled con ion-toggle -->

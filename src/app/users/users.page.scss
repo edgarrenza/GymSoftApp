@@ -1,155 +1,155 @@
-/* Estilo general del contenedor */
-:host {
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  background-color: #f9f9f9;
-}
+// /* Estilo general del contenedor */
+// :host {
+//   display: flex;
+//   flex-direction: column;
+//   padding: 16px;
+//   background-color: #f9f9f9;
+// }
 
-/* Estilos para el ion-card del formulario */
-.form-card {
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
-  margin-bottom: 20px;
-}
+// /* Estilos para el ion-card del formulario */
+// .form-card {
+//   padding: 20px;
+//   border-radius: 12px;
+//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+//   background-color: #ffffff;
+//   margin-bottom: 20px;
+// }
 
-/* Ajuste para ion-label con posición stacked */
-.input-item ion-label {
-  font-size: 14px;
-  font-weight: 500;
-  color: #555;
-  margin-bottom: 6px;
-}
+// /* Ajuste para ion-label con posición stacked */
+// .input-item ion-label {
+//   font-size: 14px;
+//   font-weight: 500;
+//   color: #555;
+//   margin-bottom: 6px;
+// }
 
-/* Ajuste específico para el label del ion-toggle */
-.input-item ion-toggle + ion-label,
-.input-item ion-label[for="enabled"] {
-  font-size: 14px;
-  font-weight: 500;
-  color: #555;
-}
+// /* Ajuste específico para el label del ion-toggle */
+// .input-item ion-toggle + ion-label,
+// .input-item ion-label[for="enabled"] {
+//   font-size: 14px;
+//   font-weight: 500;
+//   color: #555;
+// }
 
-/* Estilo para ion-input */
-.input-item ion-input {
-  margin-top: 6px;
-  padding: 10px;
-  border: 1px solid #dcdcdc;
-  border-radius: 8px;
-  background-color: #f7f7f7;
-}
+// /* Estilo para ion-input */
+// .input-item ion-input {
+//   margin-top: 6px;
+//   padding: 10px;
+//   border: 1px solid #dcdcdc;
+//   border-radius: 8px;
+//   background-color: #f7f7f7;
+// }
 
-/* Estilo para ion-select, centrando verticalmente el texto */
-.input-item ion-select {
-  margin-top: 6px;
-  padding: 10px;
-  border: 1px solid #dcdcdc;
-  border-radius: 8px;
-  background-color: #f7f7f7;
-  color: #333;
-  height: 44px; /* Ajustar la altura para centrar mejor */
-  display: flex;
-  align-items: center; /* Centrar verticalmente el texto */
-}
+// /* Estilo para ion-select, centrando verticalmente el texto */
+// .input-item ion-select {
+//   margin-top: 6px;
+//   padding: 10px;
+//   border: 1px solid #dcdcdc;
+//   border-radius: 8px;
+//   background-color: #f7f7f7;
+//   color: #333;
+//   height: 44px; /* Ajustar la altura para centrar mejor */
+//   display: flex;
+//   align-items: center; /* Centrar verticalmente el texto */
+// }
 
-/* Estilo para ion-select-option */
-.input-item ion-select-option {
-  font-size: 14px;
-}
+// /* Estilo para ion-select-option */
+// .input-item ion-select-option {
+//   font-size: 14px;
+// }
 
-/* Estilo para ion-toggle */
-.input-item ion-toggle {
-  margin-left: auto;
-}
+// /* Estilo para ion-toggle */
+// .input-item ion-toggle {
+//   margin-left: auto;
+// }
 
-/* Botón de registro */
-.btn-container {
-  margin-top: 20px;
-}
+// /* Botón de registro */
+// .btn-container {
+//   margin-top: 20px;
+// }
 
-ion-button {
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+// ion-button {
+//   font-size: 16px;
+//   font-weight: bold;
+//   border-radius: 8px;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+// }
 
-/* Estilos para el ion-card de la tabla */
-.table-card {
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
-}
+// /* Estilos para el ion-card de la tabla */
+// .table-card {
+//   padding: 20px;
+//   border-radius: 12px;
+//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+//   background-color: #ffffff;
+// }
 
-/* Encabezado de la tabla */
-.table-header {
-  font-weight: bold;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  padding: 12px;
-  text-align: center;
-}
+// /* Encabezado de la tabla */
+// .table-header {
+//   font-weight: bold;
+//   background-color: #f0f0f0;
+//   border-radius: 8px;
+//   padding: 12px;
+//   text-align: center;
+// }
 
-/* Filas de la tabla */
-.table-row {
-  border-bottom: 1px solid #e0e0e0;
-  padding: 12px;
-}
+// /* Filas de la tabla */
+// .table-row {
+//   border-bottom: 1px solid #e0e0e0;
+//   padding: 12px;
+// }
 
-/* Estilo para las columnas de la tabla */
-.table-row ion-col {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Centra todo el contenido horizontalmente */
-}
+// /* Estilo para las columnas de la tabla */
+// .table-row ion-col {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center; /* Centra todo el contenido horizontalmente */
+// }
 
-/* Ajustes específicos para la columna "Enabled" */
-.table-row ion-col:nth-child(4) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+// /* Ajustes específicos para la columna "Enabled" */
+// .table-row ion-col:nth-child(4) {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
 
-/* Iconos en la tabla */
-.table-row ion-icon {
-  font-size: 1.5em;
-  display: block;
-  margin: 0 auto;
-}
+// /* Iconos en la tabla */
+// .table-row ion-icon {
+//   font-size: 1.5em;
+//   display: block;
+//   margin: 0 auto;
+// }
 
-/* Icono de usuario habilitado (checkmark) */
-.table-row ion-icon[color="success"] {
-  color: #28a745;
-}
+// /* Icono de usuario habilitado (checkmark) */
+// .table-row ion-icon[color="success"] {
+//   color: #28a745;
+// }
 
-/* Icono de usuario deshabilitado (close) */
-.table-row ion-icon[color="danger"] {
-  color: #dc3545;
-}
+// /* Icono de usuario deshabilitado (close) */
+// .table-row ion-icon[color="danger"] {
+//   color: #dc3545;
+// }
 
-/* Ajustes para pantallas móviles */
-@media (max-width: 600px) {
-  .form-card,
-  .table-card {
-    padding: 16px;
-  }
+// /* Ajustes para pantallas móviles */
+// @media (max-width: 600px) {
+//   .form-card,
+//   .table-card {
+//     padding: 16px;
+//   }
 
-  ion-label {
-    font-size: 13px;
-  }
+//   ion-label {
+//     font-size: 13px;
+//   }
 
-  ion-input,
-  ion-select {
-    padding: 8px;
-  }
+//   ion-input,
+//   ion-select {
+//     padding: 8px;
+//   }
 
-  .btn-container ion-button {
-    font-size: 14px;
-  }
+//   .btn-container ion-button {
+//     font-size: 14px;
+//   }
 
-  .table-row ion-icon {
-    font-size: 1.2em;
-  }
-}
+//   .table-row ion-icon {
+//     font-size: 1.2em;
+//   }
+// }

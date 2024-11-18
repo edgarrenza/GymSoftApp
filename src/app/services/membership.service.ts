@@ -13,6 +13,10 @@ export class MembershipService {
 
   constructor(private http: HttpClient) { }
 
+  getMembershipById(membershipId: number): Observable<Membership> {
+    return this.http.get<Membership>(`${this.url}/one/${membershipId}`);
+  }
+
   getMemberships(): Observable<Membership[]> {
     return this.http.get<Membership[]>(`${this.url}/all`);
   }

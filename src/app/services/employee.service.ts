@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { CreateEmployee, UpdateEmployee } from '../models/employee';
+import { CreateEmployee, Employee, UpdateEmployee } from '../models/employee';
 
 @Injectable({
     providedIn: 'root'
 })
-export class Employee {
+export class EmployeeService {
 
     url = `${environment.gymSoftApi}/api/employee`;
 

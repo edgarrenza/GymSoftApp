@@ -1,0 +1,82 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>Empleados</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <ion-card class="form-card">
+        <div class="btn-container">
+          <ion-button expand="block" color="primary" (click)="modalEmployee()">
+            Crear Empleado
+          </ion-button>
+        </div>
+    </ion-card>
+
+    <!-- Tabla -->
+  <ion-card class="table-card">
+    <ion-row class="table-header">
+        <ion-col size="1">id</ion-col>
+        <ion-col size="2">Nombre</ion-col>
+        <ion-col size="1">Tipo</ion-col>
+        <ion-col size="2">Contacto</ion-col>
+        <ion-col size="1">Estado</ion-col>
+        <ion-col size="2">Usuario</ion-col>
+        <ion-col size="2">Fecha</ion-col>
+        <ion-col size="1">Acciones</ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let employee of employees" class="table-row">
+        <ion-col size="1">{{ employee.employeeId }}</ion-col>
+        <ion-col size="2">
+            {{employee.firstName}}<br>
+            {{employee.lastName}}
+        </ion-col>
+        <ion-col size="1">
+            {{employee.employeeType}}
+        </ion-col>
+        <ion-col size="2">
+            Dirección:
+            <br>
+            {{employee.address}}
+            <br>
+            Telefono:<br>
+            {{employee.phone}}
+        </ion-col>
+        <ion-col size="1">
+            <ion-icon *ngIf="employee.enabled" name="checkmark-circle" color="success" size="large"></ion-icon>
+            <ion-icon *ngIf="!employee.enabled" name="close-circle" color="danger" size="large"></ion-icon>
+          </ion-col>
+        <ion-col size="2">
+            {{employee.userId}}
+        </ion-col>
+        <ion-col size="2">
+            Creación:<br>
+            {{ employee.createdAt | date:'dd/MM/yyyy' }}
+            <br>
+            Actualización:<br>
+            {{ employee.updatedAt | date:'dd/MM/yyyy' }}
+        </ion-col>
+          
+        <ion-col size="1">
+            <ion-button color="primary" fill="outline" size="small" (click)="modalEmployee(employee.employeeId)">
+                <ion-icon slot="icon-only" name="create"></ion-icon>
+              </ion-button>
+              <ion-button color="danger" fill="outline" size="small">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-button>
+        </ion-col>
+    </ion-row>
+  </ion-card>
+
+</ion-content>
+
+<ion-toast
+  [isOpen]="showToast"
+  [message]="toastMessage"
+  [color]="toastColor"
+  duration="2000"
+  position="top"
+  (didDismiss)="showToast = false">
+</ion-toast>

@@ -4,6 +4,7 @@ import { IonicModule, ModalController } from '@ionic/angular';
 import { EmployeeService } from '../services/employee.service';
 import { Employee } from '../models/employee';
 import { AlertController } from '@ionic/angular/standalone';
+import { ModalEmployeeComponent } from '../components/modal-employee/modal-employee.component';
 
 @Component({
     selector: 'app-employees',
@@ -83,19 +84,20 @@ import { AlertController } from '@ionic/angular/standalone';
     }
 
     async modalEmployee(employeeId?: number){
-        // const modal = await this.modalController.create({
-        //   component: ModalEmployeeComponent,
-        //   componentProps: {
-        //     employeeId: employeeId ? employeeId : null,
-        //   },
-        // });
+
+        const modal = await this.modalController.create({
+          component: ModalEmployeeComponent,
+          componentProps: {
+            employeeId: employeeId ? employeeId : null,
+          },
+        });
     
-        // await modal.present()
-        // modal.onDidDismiss().then((data: any = false) => {
-        //   if(data){
-        //     this.getEmployees();
-        //   }
-        // });
+        await modal.present()
+        modal.onDidDismiss().then((data: any = false) => {
+          if(data){
+            this.getEmployees();
+          }
+        });
     }
 
     presentToast(message: string, color: string) {

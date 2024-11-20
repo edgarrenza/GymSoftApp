@@ -9,7 +9,6 @@ import { EmployeeService } from "src/app/services/employee.service";
 import { Employee } from "src/app/models/employee";
 import { forkJoin } from "rxjs";
 
-
 @Component({
     selector: 'app-modal-employee',
     templateUrl: './modal-employee.component.html',
@@ -48,11 +47,12 @@ import { forkJoin } from "rxjs";
                     },
                     error: (error: any) => {
                         this.presentToast('Error al obtener el ClientMembership', 'danger');
-                        console.log(error);
                     }
                 })
         }else{
             this.title = 'Crear Empleado';
+            this.getUsers();
+            this.initFormCreate();
         }
     }
 
@@ -77,6 +77,7 @@ import { forkJoin } from "rxjs";
           email: ['', Validators.required],
           phone: ['', Validators.required],
           userId: ['', Validators.required],
+          enabled: ['', Validators.required]
         });
         this.form.patchValue(employee);
     }

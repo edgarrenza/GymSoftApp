@@ -1,0 +1,107 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>{{ title }}</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="closeModal()">Cerrar</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="form-card"> 
+      <form *ngIf="form" [formGroup]="form">
+        <!-- userId -->
+        <ion-item *ngIf="!employeeId" class="input-item">
+            <ion-label position="stacked">Usuario</ion-label>
+            <ion-select formControlName="userId" placeholder="Selecciona el usuario">
+              <ion-select-option 
+              *ngFor="let user of users"
+              [value]="user.userId">
+              {{ user.userId }} - {{ user.username }}
+            </ion-select-option>
+            </ion-select>
+            <ion-text color="danger" *ngIf="isInvalid('userId')">
+              El usuario es requerido
+            </ion-text>
+        </ion-item>
+
+        <!-- Primer nombre -->
+        <ion-item class="input-item">
+            <ion-label position="stacked">Nombre</ion-label>
+            <ion-input type="text" required formControlName="firstName"></ion-input>
+            <ion-text color="danger" *ngIf="form.controls['firstName'].touched && form.controls['firstName'].invalid">
+              El nombre es requerido
+            </ion-text>
+        </ion-item>
+
+        <!-- Apellido -->
+        <ion-item class="input-item">
+            <ion-label position="stacked">Apellido</ion-label>
+            <ion-input type="text" required formControlName="lastName"></ion-input>
+            <ion-text color="danger" *ngIf="form.controls['lastName'].touched && form.controls['lastName'].invalid">
+              El Apellido es requerido
+            </ion-text>
+        </ion-item>
+
+        <!-- Tipo empleado -->
+        <ion-item class="input-item">
+            <ion-label position="stacked">Tipo empleado</ion-label>
+            <ion-input type="text" required formControlName="employeeType"></ion-input>
+            <ion-text color="danger" *ngIf="form.controls['employeeType'].touched && form.controls['employeeType'].invalid">
+              El tipo del empleado es requerido
+            </ion-text>
+        </ion-item>
+
+        <!-- Dirección -->
+        <ion-item class="input-item">
+            <ion-label position="stacked">Dirección</ion-label>
+            <ion-input type="text" required formControlName="address"></ion-input>
+            <ion-text color="danger" *ngIf="form.controls['address'].touched && form.controls['address'].invalid">
+              La dirección es requerida
+            </ion-text>
+        </ion-item>
+
+        <!-- E-mail -->
+        <ion-item class="input-item">
+            <ion-label position="stacked">E-mail</ion-label>
+            <ion-input type="email" required formControlName="email"></ion-input>
+            <ion-text color="danger" *ngIf="form.controls['email'].touched && form.controls['email'].invalid">
+              El e-mail es requerido
+            </ion-text>
+        </ion-item>
+
+        <!-- Telefono -->
+        <ion-item class="input-item">
+            <ion-label position="stacked">Telefono</ion-label>
+            <ion-input type="text" required formControlName="phone"></ion-input>
+            <ion-text color="danger" *ngIf="form.controls['phone'].touched && form.controls['phone'].invalid">
+              El telefono es requerido
+            </ion-text>
+        </ion-item>
+
+        <!-- Estado -->
+        <ion-item class="input-item" *ngIf="employeeId">
+          <ion-label for="enabled">Enabled</ion-label>
+          <ion-toggle formControlName="enabled"></ion-toggle>
+        </ion-item>
+
+        <div class="btn-container">
+            <ion-button *ngIf="!employeeId" expand="block" color="primary" (click)="create()">
+              Registrar
+            </ion-button>
+            <ion-button *ngIf="employeeId" expand="block" color="primary" (click)="update()">
+              Actualizar
+            </ion-button>
+        </div>
+      </form>
+    </ion-card>
+</ion-content>
+
+<ion-toast
+  [isOpen]="showToast"
+  [message]="toastMessage"
+  [color]="toastColor"
+  duration="2000"
+  position="top"
+  (didDismiss)="showToast = false">
+</ion-toast>

@@ -13,6 +13,10 @@ export class EmployeeService {
 
     constructor(private http: HttpClient) { }
 
+    getEmployeeById(employeeId: number): Observable<Employee> {
+      return this.http.get<Employee>(`${this.url}/one/${employeeId}`);
+    }
+
     getEmployees(): Observable<any[]> {
         return this.http.get<any[]>(`${this.url}/all`);
     }

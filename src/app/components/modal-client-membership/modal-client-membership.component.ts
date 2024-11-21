@@ -120,7 +120,7 @@ export class ModalClientMembershipComponent  implements OnInit {
           this.closeModal(true)
         },
         error: (error: any) => {
-          this.presentToast('Error al crear el ClientMembership', 'danger');
+          this.presentToast(`Error al crear el ClientMembership: ${JSON.stringify(error.error)}`, 'danger');
           console.log(error);
         }
       });
@@ -138,10 +138,11 @@ export class ModalClientMembershipComponent  implements OnInit {
         next: () => {
           this.form.reset();
           this.presentToast('Se ha actualizado el ClientMembership exitosamente', 'success');
+
           this.closeModal(true)
         },
         error: (error: any) => {
-          this.presentToast('Error al actualizar el ClientMembership', 'danger');
+          this.presentToast(`Error al actualizar el ClientMembership: ${JSON.stringify(error.error)}`, 'danger');
           console.log(error);
         }
       });

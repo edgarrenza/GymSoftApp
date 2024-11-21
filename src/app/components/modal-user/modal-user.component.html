@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>{{ title }}</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="closeModal()">Cerrar</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="form-card"> 
+      <form *ngIf="form" [formGroup]="form">
+        <!-- Nombre -->
+        <ion-item class="input-item">
+            <ion-label position="stacked">Nombre</ion-label>
+            <ion-input type="text" required formControlName="username"></ion-input>
+            <ion-text color="danger" *ngIf="form.controls['username'].touched && form.controls['username'].invalid">
+              El nombre es requerido
+            </ion-text>
+        </ion-item>
+
+        <!-- Campo Password -->
+        <ion-item class="input-item">
+            <ion-label position="stacked">Password</ion-label>
+            <ion-input type="password" required formControlName="password"></ion-input>
+            <ion-text color="danger" *ngIf="form.controls['password'].touched && form.controls['password'].invalid">
+            Password es requerido.
+            </ion-text>
+        </ion-item>
+
+        <!-- Campo Role -->
+        <ion-item class="input-item">
+            <ion-label position="stacked">Role</ion-label>
+            <ion-select formControlName="role" placeholder="Selecciona un rol">
+            <ion-select-option value="admin">Administrador</ion-select-option>
+            <ion-select-option value="operario">Operario</ion-select-option>
+            <ion-select-option value="entrenador">Entrenador</ion-select-option>
+            </ion-select>
+            <ion-text color="danger" *ngIf="form.controls['role'].touched && form.controls['role'].invalid">
+            Role es requerido.
+            </ion-text>
+        </ion-item>
+
+        <!-- Estado -->
+        <ion-item class="input-item" *ngIf="userId">
+          <ion-label for="enabled">Enabled</ion-label>
+          <ion-toggle formControlName="enabled"></ion-toggle>
+        </ion-item>
+
+        <div class="btn-container">
+            <ion-button *ngIf="!userId" expand="block" color="primary" (click)="create()">
+              Registrar
+            </ion-button>
+            <ion-button *ngIf="userId" expand="block" color="primary" (click)="update()">
+              Actualizar
+            </ion-button>
+        </div>
+
+      </form>
+    </ion-card>
+</ion-content>
+
+<ion-toast
+  [isOpen]="showToast"
+  [message]="toastMessage"
+  [color]="toastColor"
+  duration="2000"
+  position="top"
+  (didDismiss)="showToast = false">
+</ion-toast>

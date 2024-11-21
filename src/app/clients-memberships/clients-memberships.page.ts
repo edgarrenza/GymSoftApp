@@ -70,8 +70,7 @@ export class ClientsMembershipsPage implements OnInit {
                   this.presentToast('Se ha eliminado el ClientMembership exitosamente', 'success');
                 },
                 error: (error: any) => {
-                  this.presentToast('Error al borrar el ClientMembership', 'danger');
-                  console.log(error);
+                  this.presentToast(`EError al borrar el ClientMembership: ${JSON.stringify(error.error)}`, 'danger');
                 }
             });
           },

@@ -45,8 +45,7 @@ export class ModalMembershipComponent implements OnInit {
             this.initFormUpdate(membership);
           },
           error: (error: any) => {
-            this.presentToast('Error al obtener el ClientMembership', 'danger');
-            console.log(error);
+            this.presentToast(`Error al crear una membresia: ${JSON.stringify(error.error)}`, 'danger');
           }
         });
     } else {
@@ -89,7 +88,7 @@ export class ModalMembershipComponent implements OnInit {
             this.closeModal(true)
         },
         error: (error: any) => {
-            this.presentToast('Error al crear la membresia', 'danger');
+            this.presentToast(`Error al crear la membresia: ${JSON.stringify(error.error)}`, 'danger');
             console.log(error);
         }
     });
@@ -110,7 +109,7 @@ export class ModalMembershipComponent implements OnInit {
                     this.closeModal(true)
                   },
                   error: (error: any) => {
-                    this.presentToast('Error al actualizar la membresia', 'danger');
+                    this.presentToast(`Error al actualizar la membresia: ${JSON.stringify(error.error)}`, 'danger');
                     console.log(error);
                   }
             });

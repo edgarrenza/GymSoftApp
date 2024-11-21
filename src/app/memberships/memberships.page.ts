@@ -70,7 +70,7 @@ export class MembershipsPage implements OnInit {
                   this.presentToast('Se ha eliminado la membresia exitosamente', 'success');
                 },
                 error: (error: any) => {
-                  this.presentToast('Error al borrar la membresia', 'danger');
+                  this.presentToast(`Error al borrar la membresia: ${JSON.stringify(error.error)}`, 'danger');
                   console.log(error);
                 }
               });

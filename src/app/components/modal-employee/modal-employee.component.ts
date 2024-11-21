@@ -37,7 +37,8 @@ import { forkJoin } from "rxjs";
       ) {}
 
     ngOnInit() {
-        if(this.employeeId){
+        if(this.employeeId)
+        {
             //update
             this.title = 'Actualizar Empleado';
             this.employeeService.getEmployeeById(this.employeeId)
@@ -46,7 +47,7 @@ import { forkJoin } from "rxjs";
                         this.initFormUpdate(employee);
                     },
                     error: (error: any) => {
-                        this.presentToast('Error al obtener el ClientMembership', 'danger');
+                        this.presentToast(`Error al crear el ClientMembership: ${JSON.stringify(error.error)}`, 'danger');
                     }
                 })
         }else{
@@ -111,7 +112,7 @@ import { forkJoin } from "rxjs";
                     this.closeModal(true)
                 },
                 error: (error: any) => {
-                    this.presentToast('Error al crear el Empleado', 'danger');
+                    this.presentToast(`Error al crear el Empleado: ${JSON.stringify(error.error)}`, 'danger');
                     console.log(error);
                 }
             });
@@ -152,6 +153,4 @@ import { forkJoin } from "rxjs";
     closeModal(data?: boolean) {
         this.modalController.dismiss(data ? data : false); // Cerrar el modal
     }
-        
-
-  }
+}

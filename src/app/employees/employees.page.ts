@@ -41,8 +41,7 @@ import { ModalEmployeeComponent } from '../components/modal-employee/modal-emplo
                 this.employees = employees;
             },
             error: (error: any) => {
-                this.presentToast('Error al obtener los empleados', 'danger');
-                console.log('error', error);
+                this.presentToast('Error al obtener los empleados', error);
             }
         });
     }
@@ -70,7 +69,7 @@ import { ModalEmployeeComponent } from '../components/modal-employee/modal-emplo
                             this.presentToast('Se ha eliminado el empleado exitosamente', 'success');
                           },
                           error: (error: any) => {
-                            this.presentToast('Error al borrar el empleado', 'danger');
+                            this.presentToast(`Error al borrar el empleado: ${JSON.stringify(error.error)}`, 'danger');
                             console.log(error);
                           }
                       });
